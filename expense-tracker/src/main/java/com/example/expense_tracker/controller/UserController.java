@@ -28,4 +28,15 @@ public class UserController {
         // Now we call the service method
         return userService.getAllUsers();
     }
+    // Add this to handle the login request from the desktop app
+    @GetMapping("/login")
+    public ResponseEntity<User> loginUser(@RequestParam String username) {
+        User user = userService.findByUsername(username);
+        
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK); // User found!
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND); // User does not exist
+        }
+    }
 }
