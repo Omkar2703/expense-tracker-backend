@@ -32,4 +32,9 @@ public class TransactionController {
     public List<Transaction> getUserTransactions(@PathVariable Long userId) {
         return transactionService.getTransactionsByUser(userId);
     }
+    @DeleteMapping("/{transactionId}")
+    public ResponseEntity<Void> deleteTransaction(@PathVariable Long transactionId) {
+        transactionService.deleteTransaction(transactionId);
+        return ResponseEntity.noContent().build(); // Returns a 204 success status
+    }
 }
