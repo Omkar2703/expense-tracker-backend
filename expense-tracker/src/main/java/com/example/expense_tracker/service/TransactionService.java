@@ -44,4 +44,8 @@ public class TransactionService {
     public List<Transaction> getTransactionsByUser(Long userId) {
         return transactionRepository.findByUserId(userId);
     }
+    public void deleteTransaction(Long transactionId) {
+        // This is a built-in method that automatically deletes the row from Neon!
+        transactionRepository.deleteById(transactionId); 
+    }
 }
